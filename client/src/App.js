@@ -1,6 +1,6 @@
 import React, {
-	useState,
-	useEffect
+    useState,
+    useEffect
 } from 'react';
 
 import Container from 'react-bootstrap/Container';
@@ -18,10 +18,13 @@ import ListBlog from './ListBlog'
 
 const App = () => {
 
-	console.log("App ::");
-
-	return (
-		<Container>
+    return (
+        <Container>
+            <Row>
+                <Col>
+                    <img width="100%" height="500px" src={require(`./shared/blog.jpg`)} alt="banner" />
+                </Col>
+            </Row>
             <Row>
                 <Col>
                     <Router>
@@ -35,7 +38,7 @@ const App = () => {
                 </Col>
             </Row>
         </Container>
-	);
+    );
 };
 
 export default App;

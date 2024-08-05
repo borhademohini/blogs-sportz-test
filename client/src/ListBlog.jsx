@@ -27,7 +27,7 @@ const ListBlog = () => {
             {!isLoading && serverError ? (
                 <span>Error in fetching data ...</span>
             ) : (
-                <ListGroup as="ol" numbered>
+                <ListGroup className='mt-3' as="ol" numbered>
                     {blogs && blogs.map((blog, index) => {
                         return (
 

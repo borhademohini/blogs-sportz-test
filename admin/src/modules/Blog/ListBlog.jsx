@@ -12,13 +12,12 @@ import axios from "axios";
 import { constants } from '../../services/Constants';
 import { Link } from "react-router-dom";
 
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const ListBlog = () => {
     const DEFAULT_MODE = constants.DEFAULT_MODE;
     const BLOG_URL = constants.BLOG_URL();
-
-    
-
-    //const favoriteFruit = searchParams.get("fruit");
 
     const { isLoading, serverError, apiData } = useFetch(
         BLOG_URL
@@ -40,17 +39,13 @@ const ListBlog = () => {
     }
     const openNewBlogModal = () => setShow(true);
 
-    const openBlogDetails = (blog) => {
-        setShow(true);
-        setMode('view');
-        setCurrentBlog(blog);
-    }
-
+    
     const deleteBlog = (id) => {
         let endpoint = BLOG_URL + '/' + id;
 
         axios.delete(endpoint)
             .then(response => {
+                toast.success("Blog has been deleted successfully.");
                 setBlogs((state) => state.filter((item) => item._id !== id))
             })
             .catch(error => {
@@ -58,7 +53,7 @@ const ListBlog = () => {
 
             });
 
-        //setShowAlert(true);
+        
     }
 
     const updateBlog = (blog) => {
@@ -73,7 +68,8 @@ const ListBlog = () => {
                 let items = [...blogs];
                 items = items.map((item) => {
                     return item._id === blog._id ? formData : item;
-                })
+                });
+                toast.success("Blog has been updated successfully.");
                 setBlogs(items);
             })
             .catch(error => {
@@ -89,6 +85,7 @@ const ListBlog = () => {
 
         axios.post(BLOG_URL, blogDetails)
             .then(response => {
+                toast.success("Blog has been added successfully.");
                 setBlogs([...blogs, response.data]);
                 closeNewBlogModal();
             })
@@ -143,6 +140,7 @@ const ListBlog = () => {
             {show && <AddBlog mode={mode} show={show} currentBlog={currentBlog} closeNewBlogModal={closeNewBlogModal} addBlogHandler={addBlogHandler} />}
             {showAlert && <Alert showAlert={showAlert} closeAlertModal={() => setShowAlert(false)} proceed={deleteBlog} />}
 
+            <ToastContainer />
         </div >
     )
 };

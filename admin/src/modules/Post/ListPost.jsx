@@ -12,6 +12,9 @@ import axios from "axios";
 import { constants } from '../../services/Constants';
 import { useParams } from 'react-router-dom';
 
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const ListPost = () => {
     const DEFAULT_MODE = constants.DEFAULT_MODE;
     const POST_URL = constants.POST_URL();
@@ -50,6 +53,7 @@ const ListPost = () => {
 
         axios.delete(endpoint)
             .then(response => {
+                toast.success("Post has been deleted successfully.");
                 setPosts((state) => state.filter((item) => item._id !== id))
             })
             .catch(error => {
@@ -89,10 +93,15 @@ const ListPost = () => {
         })
             // Handle the response from backend here
             .then((response) => {
-                if (mode === 'edit')
+                
+                if (mode === 'edit') {
+                    toast.success("Post has been updated successfully.");
                     updatePost(currentPost, postDetails);
-                else
+                }
+                else {
+                    toast.success("Post has been added successfully.");
                     setPosts([...posts, response.data]);
+                }
             })
             // Catch errors if any
             .catch((err) => {
@@ -143,7 +152,7 @@ const ListPost = () => {
 
             {show && <AddPost mode={mode} show={show} currentPost={currentPost} closeNewPostModal={closeNewPostModal} postHandler={postHandler} />}
             {showAlert && <Alert showAlert={showAlert} closeAlertModal={() => setShowAlert(false)} proceed={deletePost} />}
-
+            <ToastContainer />
         </div >
     )
 };
