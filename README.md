@@ -18,15 +18,15 @@
 
 MongoDb Installation (If not installed already):
 --------------------
-wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo apt-key add -
-echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
-sudo apt-get update
-sudo apt-get install -y mongodb-org
+- wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo apt-key add -
+- echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/- mongodb-org-6.0.list
+- sudo apt-get update
+- sudo apt-get install -y mongodb-org
 
 MongoDb Start:
 ---------------
-sudo service mongod start
-sudo systemctl status mongod
+- sudo service mongod start
+- sudo systemctl status mongod
 
 1. Clone the repository: `git clone https://github.com/borhademohini/blogs-sportz.git`
 2. cd to the directory
