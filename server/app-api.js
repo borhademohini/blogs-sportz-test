@@ -1,5 +1,4 @@
 const express = require("express");
-//const busboy = require('connect-busboy');
 const mongoose = require("mongoose");
 const path = require('path');
 const fileupload = require("express-fileupload");
@@ -80,7 +79,6 @@ app.get("/blog/:id", async (req, res) => {
 
 //Insert blog
 app.post("/blog", async (req, res) => {
-    console.log("Blog data received :: ", req.body);
     try {
         const newBlog = new Blog({ ...req.body });
         const insertedBlog = await newBlog.save();
@@ -132,7 +130,6 @@ app.get("/post/:id", async (req, res) => {
 //Insert post
 app.post("/post", async (req, res) => {
     const newPost = new Post({ ...req.body });
-
 
     if (req.files) {
         let imageFile = req.files.image;

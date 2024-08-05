@@ -28,6 +28,8 @@ MongoDb Start:
 - sudo service mongod start
 - sudo systemctl status mongod
 
+Application
+------------
 1. Clone the repository: `git clone https://github.com/borhademohini/blogs-sportz.git`
 2. cd to the directory
 3. Install the dependencies in main, client, server and admin directory : `npm install`
@@ -36,3 +38,17 @@ MongoDb Start:
     - To run Client : `npm run client`
     - To run Admin : `npm run admin`
 
+## Future scope (For current implementation):
+
+1. Adding test cases
+=> check only published blogs are displayed
+=> API responses when listing of posts
+
+2. Adding TinyMCE editor to add a full fledged blog from the Admin
+
+3. While updating the post, handle image magagement as below:
+=> if request has new image and no image exists in the DB, Upload image and add it to DB.
+=> if request has new image and image already exists in the DB, unlink previous image and add new image to uploads and update DB entry.
+=> if request has no image and image already exists in the DB, update all the other data in the DB but image.
+
+4. Add middleware to log system activity
