@@ -26,7 +26,7 @@ const ListBlog = () => {
     const [show, setShow] = useState(false);
     const [showAlert, setShowAlert] = useState(false);
     const [mode, setMode] = useState(DEFAULT_MODE);
-    const [currentBlog, setCurrentBlog] = useState({});    
+    const [currentBlog, setCurrentBlog] = useState({});
 
     useEffect(() => {
         setBlogs(apiData);
@@ -37,9 +37,9 @@ const ListBlog = () => {
         setMode(DEFAULT_MODE);
         setCurrentBlog({});
     }
+
     const openNewBlogModal = () => setShow(true);
 
-    
     const deleteBlog = (id) => {
         let endpoint = BLOG_URL + '/' + id;
 
@@ -53,7 +53,6 @@ const ListBlog = () => {
 
             });
 
-        
     }
 
     const updateBlog = (blog) => {
@@ -95,11 +94,10 @@ const ListBlog = () => {
             });
     }
 
-    console.log("mode :: ", mode);
     return (
         <div>
             <div className='mt-2 mb-2 clearfix'>
-                <Button variant="primary" className="float-end"  onClick={openNewBlogModal}>Add New Blog</Button>
+                <Button variant="primary" className="float-end" onClick={openNewBlogModal}>Add New Blog</Button>
             </div>
             <div>
 
@@ -118,8 +116,8 @@ const ListBlog = () => {
                                 >
                                     <div className="ms-2 me-auto">
                                         <div className="fw-bold">
-                                        <Link to={`/posts/${blog._id}`}>{blog.name}</Link>
-                                           
+                                            <Link to={`/posts/${blog._id}`}>{blog.name}</Link>
+
                                         </div>
                                         {blog.desc}
                                     </div>

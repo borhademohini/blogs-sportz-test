@@ -2,7 +2,6 @@ import React from 'react';
 import Toast from 'react-bootstrap/Toast';
 
 const ToastUtil = ({ toast, header, toastMessage }) => {
-    console.log("toast :: ", toast);
     return (
 
         <Toast

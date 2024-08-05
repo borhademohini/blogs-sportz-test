@@ -1,6 +1,5 @@
 import React, {
-    useState,
-    useEffect
+    useState
 } from 'react';
 
 
@@ -11,8 +10,7 @@ import Form from 'react-bootstrap/Form';
 const AddBlog = ({ show, closeNewBlogModal, mode, currentBlog, addBlogHandler }) => {
 
     const defaultTitle = mode === 'add' ? 'Add New Blog' : 'View Blog';
-    const [title, setTitle] = useState(defaultTitle);
-    //const [toastMessage, setToastMessage] = useState("");  
+    const [title, setTitle] = useState(defaultTitle); 
 
     return (
         <div>           
@@ -37,7 +35,6 @@ const AddBlog = ({ show, closeNewBlogModal, mode, currentBlog, addBlogHandler })
                     </Form>
                 </Modal.Body>
             </Modal>
-            {/* <ToastUtil toast={toast} toastMessage={toastMessage} /> */}
         </div>
     )
 };

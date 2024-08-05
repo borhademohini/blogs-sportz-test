@@ -1,10 +1,5 @@
-import React, {
-    useState,
-    useEffect
-} from 'react';
-
-import ListBlog from './ListBlog'
-
+import React from 'react';
+import ListBlog from './ListBlog';
 
 const Blog = () => {
 
