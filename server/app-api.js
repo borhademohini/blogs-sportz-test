@@ -116,7 +116,7 @@ app.get("/post", async (req, res) => {
 //Get all post by blog_id
 app.get("/postbyblog/:blogId", async (req, res) => {
     const { blogId } = req.params;
-    const allPosts = await Post.find({ blog_id: blogId });
+    const allPosts = await Post.find({ blog_id: blogId }).sort({'updatedAt': -1});
     return res.status(200).json(allPosts);
 });
 

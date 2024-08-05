@@ -14,10 +14,13 @@
 
 .blinking-text {
     text-align: center;
-    margin-top: 20%;
     font-size: 24px;
     color: green;
     animation: blink 1s infinite;
+}
+
+.blinking-text.card {
+    background: aquamarine;
 }
 
 .social-media iframe {
