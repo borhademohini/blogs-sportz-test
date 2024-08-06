@@ -36,10 +36,10 @@ const ListPost = () => {
     const toastId = React.useRef(null);
 
     useEffect(() => {
-        const newSocket = io(constants.BASE_URL, { transports: ['websocket'] });
+        const newSocket = io(constants.SOCKET_URL, { transports: ['websocket'] });
         setSocket(newSocket);
         newSocket.on("connect", () => {
-            //console.log(socket.id);
+            console.log(newSocket.id);
         });
     }, [])
 

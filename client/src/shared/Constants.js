@@ -1,13 +1,14 @@
 export const constants = {
-    BASE_URL : 'http://localhost:5000',
+    SOCKET_URL : 'http://localhost:5000/',
+    BASE_URL : 'http://localhost:5000/api',
     BLOG_URL: function() {
-        return this.BASE_URL + '/activeblog';
+        return this.BASE_URL + '/blogs/activeblog';
     },
     POST_URL: function() {
         return this.BASE_URL + '/post';
     },
     POST_URL_BY_BLOG: function () {
-        return this.BASE_URL + '/postbyblog/';
+        return this.BASE_URL + '/posts/postsbyblog/';
     },
     DEFAULT_MODE: 'add',
     API_METHOD: {
