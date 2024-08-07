@@ -1,19 +1,15 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const fileupload = require("express-fileupload");
-const errorHandler = require('./middlewares/error_handler.js')
+const errorHandlerMiddleware = require('./middlewares/error_handler.js');
+const headerMiddleware = require('./middlewares/headers.js');
 
 const PORT = process.env.PORT || 5000;
 
 const app = express();
 
 app.use(express.json());
-app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
-    next();
-});
+app.use(headerMiddleware);
 app.use('/uploads', express.static('uploads'));
 app.use(fileupload());
 
@@ -26,7 +22,7 @@ app.use('/api/blogs', blogsRoutes);
 app.use('/api/posts', postsRoutes);
 /* Routes End */
 
-app.use(errorHandler);
+app.use(errorHandlerMiddleware);
 
 const server = require('http').createServer(app);
 require('./modules/io.js').initialize(server);

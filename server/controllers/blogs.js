@@ -4,7 +4,7 @@ const { Blog } = require("../models/blog-model");
 module.exports = {
     getAllBlogs: async (req, res, next) => {
         try {
-            const allBlogss = await Blog.find();
+            const allBlogs = await Blog.find();
             return res.status(200).send(allBlogs);
         }
         catch (err) {
