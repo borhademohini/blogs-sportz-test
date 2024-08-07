@@ -40,27 +40,32 @@ const ListBlog = () => {
 
     const openNewBlogModal = () => setShow(true);
 
-    const deleteBlog = (id) => {
-        let endpoint = BLOG_URL + '/' + id;
+    const deleteBlog = (blog, value) => {
+        let blogData = {...blog};
+        blogData.is_deleted = value;
+        updateBlog(blogData, 'delete');
+       // let endpoint = BLOG_URL + '/' + id;
+        // axios.delete(endpoint)
+        //     .then(response => {
+        //         toast.success("Blog has been deleted successfully.");
+        //         setBlogs((state) => state.filter((item) => item._id !== id))
+        //     })
+        //     .catch(error => {
+        //         console.log("Blog not deleted :: ", error);
 
-        axios.delete(endpoint)
-            .then(response => {
-                toast.success("Blog has been deleted successfully.");
-                setBlogs((state) => state.filter((item) => item._id !== id))
-            })
-            .catch(error => {
-                console.log("Blog not deleted :: ", error);
-
-            });
+        //     });
 
     }
 
-    const updateBlog = (blog) => {
+    const updateBlog = (blog, action) => {
         let endpoint = BLOG_URL + '/' + blog._id;
 
-        let publish = blog.publish ? false : true;
         let formData = { ...blog };
-        formData.publish = publish;
+
+        if (action && action === 'update') {
+            let publish = blog.publish ? false : true;        
+            formData.publish = publish;
+        }
 
         axios.put(endpoint, formData)
             .then(response => {
@@ -107,8 +112,7 @@ const ListBlog = () => {
                 ) : (
                     <ListGroup as="ol" numbered>
                         {blogs && blogs.map((blog, index) => {
-                            return (
-
+                            return  (
                                 <ListGroup.Item
                                     key={blog._id}
                                     as="li"
@@ -121,14 +125,16 @@ const ListBlog = () => {
                                         </div>
                                         {blog.desc}
                                     </div>
-                                    <Button onClick={() => updateBlog(blog)}>
+                                    <Button disabled={blog.is_deleted} onClick={() => updateBlog(blog, 'update')}>
                                         {blog.publish ? "Unpublish" : "Publish"}
                                     </Button>
-                                    {!blog.publish && <Button variant="danger" className="ms-2" onClick={() => deleteBlog(blog._id)}>
+                                    {!blog.is_deleted && <Button disabled={blog.publish} variant="danger" className="ms-2" onClick={() => deleteBlog(blog, true)}>
                                         Delete
                                     </Button>}
+                                    { blog.is_deleted &&  <Button variant="info" className="ms-2" onClick={() => deleteBlog(blog, false)}>
+                                        Restore
+                                    </Button>}
                                 </ListGroup.Item>
-
                             )
                         })}
                     </ListGroup>
