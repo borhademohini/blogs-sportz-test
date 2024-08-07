@@ -1,6 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const fileupload = require("express-fileupload");
+const errorHandler = require('./middlewares/error_handler.js')
+
 const PORT = process.env.PORT || 5000;
 
 const app = express();
@@ -23,6 +25,8 @@ const postsRoutes = require('./routes/posts.js')(pRouter, {});
 app.use('/api/blogs', blogsRoutes);
 app.use('/api/posts', postsRoutes);
 /* Routes End */
+
+app.use(errorHandler);
 
 const server = require('http').createServer(app);
 require('./modules/io.js').initialize(server);

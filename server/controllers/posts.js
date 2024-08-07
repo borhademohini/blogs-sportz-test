@@ -5,38 +5,36 @@ const urlMetadata = require('url-metadata');
 const socket = require('../modules/io');
 
 module.exports = {
-    getAllPosts: async (req, res) => {
+    getAllPosts: async (req, res, next) => {
         try {
             const allPosts = await Posts.find();
             return res.status(200).json(allPosts);
         }
         catch (err) {
-            res.status(500).send(err)
+            next(err);
         }
     },
-    getPostsByBlogs: async (req, res) => {
-        console.log("Inside listing ::");
+    getPostsByBlogs: async (req, res, next) => {
         try {
             const { blogid } = req.params;
             const allPosts = await Posts.find({ blog_id: blogid }).sort({ 'updatedAt': -1 });
             return res.status(200).json(allPosts);
         }
         catch (err) {
-            console.log("listing error :: ", err);
-            res.status(500).send(err)
+            next(err);
         }
     },
-    getPostDetails: async (req, res) => {
+    getPostDetails: async (req, res, next) => {
         try {
             const { id } = req.params;
             const employee = await Posts.findById(id);
             return res.status(200).json(employee);
         }
         catch (err) {
-            res.status(500).send(err)
+            next(err);
         }
     },   
-    createPost: async (req, res) => {
+    createPost: async (req, res, next) => {
         try {
             const newPost = new Posts({ ...req.body });
 
@@ -75,21 +73,20 @@ module.exports = {
             return res.status(201).json(insertedPost);
         }
         catch (err) {
-            console.log("error :: ", err);
-            return res.status(200).send(err)
+            next(err);
         }
     },
-    deletePost: async (req, res) => {
+    deletePost: async (req, res, next) => {
         try {
             const { id } = req.params;
             const deletedPost = await Posts.findByIdAndDelete(id);
             return res.status(200).json(deletedPost);
         }
         catch (err) {
-            res.status(500).send(err)
+            next(err);
         }
     },
-    updatePost: async (req, res) => {
+    updatePost: async (req, res, next) => {
         try {
             const { id } = req.params;
             await Posts.updateOne({ _id: id }, req.body);
@@ -97,7 +94,7 @@ module.exports = {
             return res.status(200).json(updatedPost);
         }
         catch (err) {
-            res.status(500).send(err)
+            next(err);
         }
     }
 
