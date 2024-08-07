@@ -10,9 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "apicache": "^1.6.3",
     "connect-busboy": "^1.0.0",
     "express": "^4.19.2",
     "express-fileupload": "^1.5.1",
+    "express-rate-limit": "^7.4.0",
     "fs-extra": "^11.2.0",
     "http-errors": "^2.0.0",
     "imap": "^0.8.19",

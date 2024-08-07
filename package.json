@@ -6,7 +6,7 @@
   "scripts": {
     "install": "cd client && npm install && cd admin && npm install && cd ../server && npm install",
     "start": "npm run server",
-    "server": "cd server && nodemon app-api.js",
+    "server": "cd server && nodemon app.js",
     "client": "cd client && npm start",
     "admin": "cd admin && npm start"
   },
