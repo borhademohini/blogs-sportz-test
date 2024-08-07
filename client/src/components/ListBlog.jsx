@@ -4,8 +4,8 @@ import React, {
 } from 'react';
 
 import ListGroup from 'react-bootstrap/ListGroup';
-import useFetch from "./shared/useFetch";
-import { constants } from './shared/Constants';
+import useFetch from "../shared/useFetch";
+import { constants } from '../shared/Constants';
 import { Link } from "react-router-dom";
 
 const ListBlog = () => {

@@ -13,11 +13,11 @@ import {
     Route
 } from "react-router-dom";
 
-import ListPost from './ListPost';
-import ListBlog from './ListBlog';
+import ListPost from './components/ListPost';
+import ListBlog from './components/ListBlog';
 
 import ErrorBoundary from "./shared/ErrorBoundary";
-import './App.css';
+import './assets/css/App.css';
 
 const App = () => {
 
@@ -26,7 +26,7 @@ const App = () => {
             <Container>
                 <Row>
                     <Col>
-                        <img width="100%" height="500px" src={require(`./shared/blog.jpg`)} alt="banner" />
+                        <img width="100%" height="500px" src={require(`./assets/images/blog.jpg`)} alt="banner" />
                     </Col>
                 </Row>
                 <Row>

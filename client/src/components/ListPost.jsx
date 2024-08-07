@@ -3,17 +3,16 @@ import React, {
     useEffect
 } from 'react';
 
-import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
-import useFetch from "./shared/useFetch";
-import { constants } from './shared/Constants';
+import useFetch from "../shared/useFetch";
+import { constants } from '../shared/Constants';
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
 import { io } from "socket.io-client";
-import './custom.css';
+import '../assets/css/custom.css';
 import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
 
