@@ -5,7 +5,7 @@ import React, {
 
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
-import AddPost from "./AddPost";
+import ManagePost from "./ManagePost";
 import useFetch from "../../services/useFetch";
 import Alert from "../../services/CustomAlert";
 import axios from "axios";
@@ -150,7 +150,7 @@ const ListPost = () => {
                 )}
             </div>
 
-            {show && <AddPost mode={mode} show={show} currentPost={currentPost} closeNewPostModal={closeNewPostModal} postHandler={postHandler} />}
+            {show && <ManagePost mode={mode} show={show} currentPost={currentPost} closeNewPostModal={closeNewPostModal} postHandler={postHandler} />}
             {showAlert && <Alert showAlert={showAlert} closeAlertModal={() => setShowAlert(false)} proceed={deletePost} />}
             <ToastContainer />
         </div >

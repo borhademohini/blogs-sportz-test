@@ -20,5 +20,10 @@ export const constants = {
         metadata_post: "Scraped Page Metadata",
         facebook_post: "Facebook Post",
         twitter_post: "Twitter Post"
+    },
+    POST_PAGE_TITLES: {
+        add: 'Add New Post',
+        edit: 'Edit Post',
+        view: 'View Post'
     }
 }

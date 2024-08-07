@@ -124,9 +124,9 @@ const ListBlog = () => {
                                     <Button onClick={() => updateBlog(blog)}>
                                         {blog.publish ? "Unpublish" : "Publish"}
                                     </Button>
-                                    <Button variant="danger" className="ms-2" onClick={() => deleteBlog(blog._id)}>
+                                    {!blog.publish && <Button variant="danger" className="ms-2" onClick={() => deleteBlog(blog._id)}>
                                         Delete
-                                    </Button>
+                                    </Button>}
                                 </ListGroup.Item>
 
                             )

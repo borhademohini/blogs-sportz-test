@@ -10,11 +10,10 @@ import Form from 'react-bootstrap/Form';
 import { constants } from '../../services/Constants';
 const AddPost = ({ show, closeNewPostModal, mode, currentPost, postHandler }) => {
 
-    const defaultTitle = mode === 'add' ? 'Add New Post' : 'View Post';
+    const defaultTitle = constants.POST_PAGE_TITLES[mode];
     const [title, setTitle] = useState(defaultTitle);
     const [postType, setPostType] = useState(currentPost ? currentPost.post_type : 'simple_post');
 
-    console.log("Object.keys(constants.POST_TYPES) :: ", constants, constants.POST_TYPES)
     return (
         <div>
 
@@ -66,7 +65,6 @@ const AddPost = ({ show, closeNewPostModal, mode, currentPost, postHandler }) =>
                     </Form>
                 </Modal.Body>
             </Modal>
-            {/* <ToastUtil toast={toast} toastMessage={toastMessage} /> */}
         </div>
     )
 };
