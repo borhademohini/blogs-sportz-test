@@ -14,30 +14,36 @@ import {
 } from "react-router-dom";
 
 import ListPost from './ListPost';
-import ListBlog from './ListBlog'
+import ListBlog from './ListBlog';
+
+import ErrorBoundary from "./shared/ErrorBoundary";
+import './App.css';
 
 const App = () => {
 
     return (
-        <Container>
-            <Row>
-                <Col>
-                    <img width="100%" height="500px" src={require(`./shared/blog.jpg`)} alt="banner" />
-                </Col>
-            </Row>
-            <Row>
-                <Col>
-                    <Router>
-                        <Routes>
-                            <Route path="/" element={<ListBlog />} />
-                            <Route path="/blogs" element={<ListBlog />} />
-                            <Route path="/posts/:id" element={<ListPost />} />
-                            <Route path="/posts" element={<ListPost />} />
-                        </Routes>
-                    </Router>
-                </Col>
-            </Row>
-        </Container>
+        <ErrorBoundary>
+            <Container>
+                <Row>
+                    <Col>
+                        <img width="100%" height="500px" src={require(`./shared/blog.jpg`)} alt="banner" />
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <Router>
+                            <Routes>
+                                <Route path="/" element={<ListBlog />} />
+                                <Route path="/blogs" element={<ListBlog />} />
+                                <Route path="/posts/:id" element={<ListPost />} />
+                                <Route path="/posts" element={<ListPost />} />
+                            </Routes>
+                        </Router>
+                    </Col>
+                </Row>
+            </Container>
+
+        </ErrorBoundary>
     );
 };
 
